@@ -103,7 +103,7 @@
             </div>
         </div>
         <div class="action-footer">
-            <button class="save-button">Save Bundles</button>
+            <button id="save-bundles-btn" class="save-button">Save Bundles</button>
         </div>
     </main>
     <script>
@@ -115,6 +115,7 @@
             const layersInput = document.getElementById('layers-input');
             const bundleTableBody = document.getElementById('bundle-table-body');
             const currentLayersSumEl = document.getElementById('current-layers-sum');
+            const saveBtn = document.getElementById('save-bundles-btn');
             let bundleCounter = 1;
 
             function updateTotal() {
@@ -157,6 +158,17 @@
                 layersInput.value = '';
                 layersInput.focus();
                 updateTotal();
+            });
+
+            // **** UPDATED SAVE BUTTON LOGIC ****
+            saveBtn.addEventListener('click', () => {
+                const currentSum = parseInt(currentLayersSumEl.textContent);
+                if (currentSum !== totalLayers) {
+                    alert(`The total layers added (${currentSum}) must match the target (${totalLayers}).`);
+                    return;
+                }
+                // Redirect to the new print page
+                window.location.href = 'bundle-print-tags.html';
             });
         });
     </script>

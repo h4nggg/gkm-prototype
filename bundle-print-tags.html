@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Bundle Tags</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { margin: 0; font-family: 'Poppins', sans-serif; background-color: #f0f2f5; color: #1c1e21; }
+        .app-header {
+            background-color: #1877F2; color: #ffffff; padding: 16px 30px;
+            display: flex; align-items: center; justify-content: space-between;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .header-title { font-size: 1.6rem; font-weight: 600; }
+        .back-to-list {
+            display: flex; align-items: center; background-color: transparent;
+            border: 1px solid #ffffff; color: #ffffff; padding: 8px 16px;
+            border-radius: 6px; font-size: 0.9rem; cursor: pointer;
+            text-decoration: none; transition: background-color 0.2s ease;
+        }
+        .back-to-list:hover { background-color: #ffffff; color: #1877F2; }
+        .back-to-list svg { width: 20px; height: 20px; margin-right: 8px; }
+        .main-container { padding: 30px; max-width: 900px; margin: 0 auto; }
+        .content-card {
+            background-color: #ffffff; padding: 25px 30px; border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); margin-bottom: 30px;
+        }
+        .content-card h3 {
+            margin: 0 0 20px 0; font-weight: 600; font-size: 1.3rem;
+            border-bottom: 1px solid #e0e0e0; padding-bottom: 15px;
+        }
+        .info-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px 25px;
+        }
+        .info-item strong { display: block; color: #606770; font-size: 0.9rem; margin-bottom: 4px; }
+        .info-item span { font-size: 1rem; }
+        .bundle-table { width: 100%; border-collapse: collapse; text-align: left; margin-top: 20px; }
+        .bundle-table th, .bundle-table td { padding: 12px 15px; border-bottom: 1px solid #f0f2f5; }
+        .bundle-table thead { background-color: #f5f6f7; }
+        .action-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .print-button {
+            padding: 12px 30px; font-size: 1.1rem; background-color: #17a2b8;
+            color: white; border: none; border-radius: 6px; cursor: pointer;
+            font-weight: 500; font-family: 'Poppins', sans-serif;
+            transition: background-color 0.2s ease;
+            display: inline-flex; align-items: center;
+        }
+        .print-button svg { width: 20px; height: 20px; margin-right: 10px; }
+        .print-button:hover { background-color: #138496; }
+
+        /* Print specific styles */
+        @media print {
+            body { background-color: #fff; }
+            .app-header, .action-footer, .back-to-list { display: none; }
+            .main-container { padding: 0; }
+            .content-card { box-shadow: none; border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-title">Bundles for Mark #1</div>
+        <a href="add-bundle-mark-list.html" class="back-to-list">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12.707 17.293 8.414 13H18v-2H8.414l4.293-4.293-1.414-1.414L4.586 12l6.707 6.707z"></path></svg>
+            Back to Mark List
+        </a>
+    </header>
+    <main class="main-container">
+        <div class="content-card">
+            <h3>Mark Information</h3>
+            <div class="info-grid">
+                <div class="info-item"><strong>Project ID:</strong><span>PROJ-005</span></div>
+                <div class="info-item"><strong>Mark #:</strong><span>1</span></div>
+                <div class="info-item"><strong>Total Layers:</strong><span>30</span></div>
+                <div class="info-item"><strong>Fabric:</strong><span>Cotton 100% (Black)</span></div>
+            </div>
+        </div>
+        <div class="content-card">
+            <h3>Bundles Summary</h3>
+            <table class="bundle-table">
+                <thead><tr><th>Bundle ID</th><th>Layers</th></tr></thead>
+                <tbody>
+                    <!-- This is mock data. In a real app, you'd pass this from the previous page. -->
+                    <tr><td>BDL-005-1-1</td><td>10</td></tr>
+                    <tr><td>BDL-005-1-2</td><td>10</td></tr>
+                    <tr><td>BDL-005-1-3</td><td>10</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="action-footer">
+            <button onclick="window.print()" class="print-button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 18H6v-4h2v4zm6 0h-4v-4h4v4zm-5-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm8-5H7V3h10v3z"></path></svg>
+                Print All Tags
+            </button>
+        </div>
+    </main>
+</body>
+</html>
