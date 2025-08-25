@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Homescreen</title>
+    <!-- Import Google Font 'Poppins' -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- การตั้งค่าโดยรวม --- */
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5;
+            color: #1c1e21;
+        }
+
+        /* --- ส่วน Header --- */
+        .app-header {
+            background-color: #1877F2;
+            color: #ffffff;
+            padding: 16px 0;
+            text-align: center;
+            font-size: 1.6rem;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* --- ส่วนแสดงแอป (Grid Layout) --- */
+        .app-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 50px;
+            gap: 35px;
+        }
+
+        /* --- การ์ดแอปแต่ละอัน --- */
+        .app-card {
+            background-color: #ffffff;
+            width: 240px;
+            height: 240px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            user-select: none;
+            text-align: center;
+            text-decoration: none; /* Remove underline from links */
+        }
+
+        /* --- เอฟเฟกต์เมื่อนำเมาส์ไปชี้ --- */
+        .app-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        /* --- เอฟเฟกต์เมื่อกดคลิก --- */
+        .app-card:active {
+            transform: translateY(-2px) scale(0.98);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* --- วงกลมไอคอน --- */
+        .app-icon-container {
+            width: 90px;
+            height: 90px;
+            background-color: #1877F2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            transition: background-color 0.2s ease;
+        }
+
+        .app-card:hover .app-icon-container {
+             background-color: #166fe5;
+        }
+        
+        /* --- ไอคอน SVG --- */
+        .app-icon-container svg {
+            width: 48px;
+            height: 48px;
+        }
+
+        /* --- ชื่อแอป --- */
+        .app-name {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #333333;
+            padding: 0 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        Applications
+    </header>
+
+    <main class="app-grid">
+
+        <!-- App 1: Project Tracking -->
+        <a href="project-tracking.html" class="app-card">
+            <div class="app-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M20 7h-5V4c0-1.103-.897-2-2-2h-2c-1.103 0-2 .897-2 2v3H4c-1.103 0-2 .897-2 2v11c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V9c0-1.103-.897-2-2-2zM4 20V9h16l.002 11H4z"></path><path d="M7 12h10v2H7zm0 4h7v2H7z"></path></svg>
+            </div>
+            <div class="app-name">Project Tracking</div>
+        </a>
+
+        <!-- App 2: Add Project -->
+        <a href="add-project.html" class="app-card">
+            <div class="app-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M13 9h-2v2H9v2h2v2h2v-2h2v-2h-2z"></path><path d="M20 5h-8.586l-2-2H4c-1.103 0-2 .897-2 2v13c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V7c0-1.103-.897-2-2-2zm0 13H4V5h4.586l2 2H20v11z"></path></svg>
+            </div>
+            <div class="app-name">Add Project</div>
+        </a>
+        
+        <!-- App 3: Add Project Remark -->
+        <a href="project-remark-list.html" class="app-card">
+            <div class="app-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M19.045 7.401c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.378-.378-.88-.586-1.414-.586s-1.036.208-1.414.586L3 12.586V18h5.414L19.045 7.401zm-3.586-2L14 4.586 16.586 2 18 3.414 15.459 6zM4 13.414l7-7L12.586 8 6 14.586V17h2.414l.5-.5-1.5-1.5L4 13.414z"></path></svg>
+            </div>
+            <div class="app-name">Add Project Remark</div>
+        </a>
+
+        <!-- App 4: Set Project Stations -->
+        <a href="set-stations-project-list.html" class="app-card">
+            <div class="app-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 2a5 5 0 0 0-5 5c0 3.99 4.99 10.5 5 10.5s5-6.51 5-10.5a5 5 0 0 0-5-5zm0 7.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"></path><path d="M19.99 18.54c-1.33-1.33-3.11-2.04-4.99-2.04s-3.66.71-4.99 2.04a1 1 0 0 0 1.41 1.41c.88-.88 2.08-1.45 3.58-1.45s2.7.57 3.58 1.45a1 1 0 0 0 1.41-1.41z"></path></svg>
+            </div>
+            <div class="app-name">Set Project Stations</div>
+        </a>
+
+        <!-- App 5: Add Mark -->
+        <a href="add-mark-project-list.html" class="app-card">
+            <div class="app-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M18 2H6c-1.103 0-2 .897-2 2v18l8-4.572L20 22V4c0-1.103-.897-2-2-2zm-2 10h-4v4h-2v-4H6v-2h4V6h2v4h4v2z"></path></svg>
+            </div>
+            <div class="app-name">Add Mark</div>
+        </a>
+
+        <!-- App 6: Add Bundle -->
+        <a href="add-bundle-project-list.html" class="app-card">
+            <div class="app-icon-container">
+                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M20.39 8.88a1 1 0 0 0-1.13-.33l-5.4 1.8-3.4-6.99a1 1 0 0 0-1.72-.01l-3.4 6.99-5.4-1.8a1 1 0 0 0-1.12 1.33l3.61 7.42a1 1 0 0 0 .9.58h13a1 1 0 0 0 .9-.58l3.61-7.42a1 1 0 0 0-.25-1.32zM6.1 17l-2.88-5.93 4.08 1.36L6.1 17zm8.8-4.4-1-2.05 1-2.05 4.08 1.36L14.9 17h-4l-1.2-4.4 4.08-1.36z"></path></svg>
+            </div>
+            <div class="app-name">Add Bundle</div>
+        </a>
+
+        <!-- App 7: Bundle Tracking -->
+        <a href="bundle-tracking.html" class="app-card">
+            <div class="app-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11 4h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6h-4v-4h4v4zM10 13H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm11-10h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4z"></path></svg>
+            </div>
+            <div class="app-name">Bundle Tracking</div>
+        </a>
+        
+    </main>
+
+</body>
+</html>

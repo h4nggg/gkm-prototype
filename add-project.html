@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Project</title>
+    <!-- Import Google Font 'Poppins' -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- General & Reusable Styles --- */
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5;
+            color: #1c1e21;
+        }
+
+        .app-header {
+            background-color: #1877F2;
+            color: #ffffff;
+            padding: 16px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header-title { font-size: 1.6rem; font-weight: 600; }
+
+        .back-to-home {
+            display: flex;
+            align-items: center;
+            background-color: transparent;
+            border: 1px solid #ffffff;
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+        }
+        
+        .back-to-home:hover { background-color: #ffffff; color: #1877F2; }
+        .back-to-home svg { width: 20px; height: 20px; margin-right: 8px; }
+
+        .main-container { padding: 30px; max-width: 1000px; margin: 0 auto; }
+
+        .content-card {
+            background-color: #ffffff;
+            padding: 25px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+        }
+        
+        .content-card h3 {
+            margin: 0 0 25px 0;
+            font-weight: 600;
+            font-size: 1.3rem;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 15px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .form-group { display: flex; flex-direction: column; }
+        
+        .form-group label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #606770;
+        }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccd0d5;
+            border-radius: 6px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        .form-group textarea { resize: vertical; min-height: 80px; }
+        
+        .primary-button {
+            padding: 10px 20px;
+            background-color: #1877F2;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+            transition: background-color 0.2s ease;
+            height: 42px;
+        }
+        .primary-button:hover { background-color: #166fe5; }
+
+        .table-container { overflow-x: auto; }
+        .data-table { width: 100%; border-collapse: collapse; text-align: left; }
+        .data-table th, .data-table td { padding: 12px 15px; border-bottom: 1px solid #f0f2f5; }
+        .data-table thead { background-color: #f5f6f7; }
+        .data-table th { font-weight: 600; font-size: 0.9rem; color: #606770; }
+        
+        .delete-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+        .delete-btn svg { width: 20px; height: 20px; fill: #9a9a9a; transition: fill 0.2s ease; }
+        .delete-btn:hover svg { fill: #e0245e; }
+
+        .action-footer { text-align: right; }
+        .create-button {
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            background-color: #42b72a; /* Green color */
+        }
+        .create-button:hover { background-color: #36a420; }
+
+    </style>
+</head>
+<body>
+
+    <!-- =========== Header =========== -->
+    <header class="app-header">
+        <div class="header-title">Add New Project</div>
+        <a href="homescreen.html" class="back-to-home">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12.707 17.293 8.414 13H18v-2H8.414l4.293-4.293-1.414-1.414L4.586 12l6.707 6.707z"></path></svg>
+            Back to Home
+        </a>
+    </header>
+
+    <!-- =========== Main Content =========== -->
+    <main class="main-container">
+
+        <!-- =========== Project Details Card =========== -->
+        <div class="content-card">
+            <h3>Project Details</h3>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="project-id">Project ID / PDNo</label>
+                    <input type="text" id="project-id" placeholder="e.g., P-25-0267">
+                </div>
+                <div class="form-group">
+                    <label for="customer">Customer</label>
+                    <select id="customer">
+                        <option value="">Select Customer</option>
+                        <option value="hammax">HAMMAX</option>
+                        <option value="vince">VINCE</option>
+                        <option value="other">Other Brand</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="style-code">Style Code</label>
+                    <input type="text" id="style-code" placeholder="e.g., 84813">
+                </div>
+                <div class="form-group">
+                    <label for="product-type">Product Type</label>
+                    <select id="product-type">
+                        <option value="">Select Type</option>
+                        <option value="t-shirt">T-Shirt (เสื้อคอกลม)</option>
+                        <option value="polo">Polo Shirt (เสื้อโปโล)</option>
+                        <option value="shirt">Shirt (เสื้อเชิ้ต)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="color">Color</label>
+                    <input type="text" id="color" placeholder="e.g., Black, White, Navy">
+                </div>
+                 <div class="form-group">
+                    <label for="season">Season</label>
+                    <select id="season">
+                        <option value="">Select Season</option>
+                        <option value="ss25">SPRING/SUMMER 25</option>
+                        <option value="fw25">FALL/WINTER 25</option>
+                    </select>
+                </div>
+                <div class="form-group" style="grid-column: 1 / -1;">
+                    <label for="notes">Main Note / Description</label>
+                    <textarea id="notes" placeholder="Add any important details here..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- =========== Fabric Details Card =========== -->
+        <div class="content-card">
+            <h3>Fabric Details</h3>
+            <div class="form-grid" style="align-items: flex-end; margin-bottom: 20px;">
+                <div class="form-group">
+                    <label for="fabric-name">Fabric Name</label>
+                    <input type="text" id="fabric-name" placeholder="e.g., Cotton 100%">
+                </div>
+                <div class="form-group">
+                    <label for="fabric-color">Color</label>
+                    <input type="text" id="fabric-color" placeholder="e.g., Black">
+                </div>
+                <div class="form-group">
+                    <label for="fabric-part">Part / Remark</label>
+                    <input type="text" id="fabric-part" placeholder="e.g., Body, Sleeves">
+                </div>
+                <div class="form-group">
+                    <button id="add-fabric-btn" class="primary-button">Add Fabric</button>
+                </div>
+            </div>
+            <div class="table-container">
+                <table class="data-table">
+                    <thead><tr><th>Fabric Name</th><th>Color</th><th>Part / Remark</th><th>Action</th></tr></thead>
+                    <tbody id="fabric-table-body"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- =========== Size & Quantity Card =========== -->
+        <div class="content-card">
+            <h3>Size & Quantity</h3>
+            <div class="form-grid" style="grid-template-columns: 1fr 1fr auto; gap: 15px; align-items: flex-end; margin-bottom: 20px;">
+                <div class="form-group">
+                    <label for="size-input">Size</label>
+                    <input type="text" id="size-input" placeholder="e.g., S, M, L, XL">
+                </div>
+                <div class="form-group">
+                    <label for="amount-input">Amount</label>
+                    <input type="number" id="amount-input" placeholder="e.g., 100">
+                </div>
+                <button id="add-size-btn" class="primary-button">Add</button>
+            </div>
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Size</th>
+                            <th>Amount</th>
+                            <th style="width: 50px;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="size-table-body">
+                        <!-- Rows will be added here by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- =========== Action Footer =========== -->
+        <div class="action-footer">
+            <button id="create-project-btn" class="primary-button create-button">Create Project</button>
+        </div>
+
+    </main>
+
+    <script>
+        // --- Elements ---
+        const addSizeBtn = document.getElementById('add-size-btn');
+        const sizeInput = document.getElementById('size-input');
+        const amountInput = document.getElementById('amount-input');
+        const sizeTableBody = document.getElementById('size-table-body');
+        const createProjectBtn = document.getElementById('create-project-btn');
+        const addFabricBtn = document.getElementById('add-fabric-btn');
+        const fabricTableBody = document.getElementById('fabric-table-body');
+
+        // --- Add Fabric to Table ---
+        addFabricBtn.addEventListener('click', () => {
+            const nameInput = document.getElementById('fabric-name');
+            const colorInput = document.getElementById('fabric-color');
+            const partInput = document.getElementById('fabric-part');
+
+            if (!nameInput.value || !colorInput.value) {
+                alert('Please enter Fabric Name and Color.');
+                return;
+            }
+
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td>${nameInput.value}</td>
+                <td>${colorInput.value}</td>
+                <td>${partInput.value || '-'}</td>
+                <td><button class="delete-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"></path></svg></button></td>
+            `;
+            newRow.querySelector('.delete-btn').addEventListener('click', function() { this.closest('tr').remove(); });
+            fabricTableBody.appendChild(newRow);
+
+            nameInput.value = '';
+            colorInput.value = '';
+            partInput.value = '';
+            nameInput.focus();
+        });
+
+        // --- Add Size to Table ---
+        addSizeBtn.addEventListener('click', () => {
+            const size = sizeInput.value.trim().toUpperCase();
+            const amount = amountInput.value.trim();
+
+            if (size === '' || amount === '' || parseInt(amount) <= 0) {
+                alert('Please enter a valid Size and Amount.');
+                return;
+            }
+
+            const newRow = document.createElement('tr');
+            
+            newRow.innerHTML = `
+                <td>${size}</td>
+                <td>${amount}</td>
+                <td>
+                    <button class="delete-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"></path></svg>
+                    </button>
+                </td>
+            `;
+
+            newRow.querySelector('.delete-btn').addEventListener('click', function() {
+                this.closest('tr').remove();
+            });
+
+            sizeTableBody.appendChild(newRow);
+            sizeInput.value = '';
+            amountInput.value = '';
+            sizeInput.focus();
+        });
+        
+        // --- Create Project Button ---
+        createProjectBtn.addEventListener('click', () => {
+             alert('Project Created! (This is a prototype)');
+        });
+
+    </script>
+
+</body>
+</html>

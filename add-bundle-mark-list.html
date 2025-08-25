@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Bundle - Mark List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { margin: 0; font-family: 'Poppins', sans-serif; background-color: #f0f2f5; color: #1c1e21; }
+        .app-header {
+            background-color: #1877F2; color: #ffffff; padding: 16px 30px;
+            display: flex; align-items: center; justify-content: space-between;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .header-title { font-size: 1.6rem; font-weight: 600; }
+        .back-to-list {
+            display: flex; align-items: center; background-color: transparent;
+            border: 1px solid #ffffff; color: #ffffff; padding: 8px 16px;
+            border-radius: 6px; font-size: 0.9rem; cursor: pointer;
+            text-decoration: none; transition: background-color 0.2s ease;
+        }
+        .back-to-list:hover { background-color: #ffffff; color: #1877F2; }
+        .back-to-list svg { width: 20px; height: 20px; margin-right: 8px; }
+        .main-container { padding: 30px; max-width: 1200px; margin: 0 auto; }
+        .table-container {
+            background-color: #ffffff; border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); overflow-x: auto;
+        }
+        .project-table { width: 100%; border-collapse: collapse; text-align: left; }
+        .project-table th, .project-table td { padding: 15px 20px; border-bottom: 1px solid #f0f2f5; }
+        .project-table thead { background-color: #f5f6f7; }
+        .project-table th { font-weight: 600; font-size: 0.9rem; color: #606770; text-transform: uppercase; }
+        .project-table tbody tr:hover { background-color: #f5f6f7; }
+        .action-btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            background-color: #6f42c1; color: white; border: none;
+            border-radius: 6px; padding: 8px 12px; cursor: pointer;
+            text-decoration: none; transition: background-color 0.2s;
+        }
+        .action-btn:hover { background-color: #5a32a3; }
+        .action-btn svg { width: 18px; height: 18px; margin-right: 6px; }
+    </style>
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-title">Mark List for PROJ-005</div>
+        <a href="add-bundle-project-list.html" class="back-to-list">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12.707 17.293 8.414 13H18v-2H8.414l4.293-4.293-1.414-1.414L4.586 12l6.707 6.707z"></path></svg>
+            Back to Project List
+        </a>
+    </header>
+    <main class="main-container">
+        <div class="table-container">
+            <table class="project-table">
+                <thead>
+                    <tr><th>Mark #</th><th>Layers</th><th>Copies</th><th>Length (in)</th><th>Size Distribution</th><th>Action</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td><td>30</td><td>1</td><td>180</td><td>S x 1, M x 2, L x 1</td>
+                        <td>
+                            <a href="add-bundle-detail.html" class="action-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.39 8.88a1 1 0 0 0-1.13-.33l-5.4 1.8-3.4-6.99a1 1 0 0 0-1.72-.01l-3.4 6.99-5.4-1.8a1 1 0 0 0-1.12 1.33l3.61 7.42a1 1 0 0 0 .9.58h13a1 1 0 0 0 .9-.58l3.61-7.42a1 1 0 0 0-.25-1.32zM6.1 17l-2.88-5.93 4.08 1.36L6.1 17zm8.8-4.4-1-2.05 1-2.05 4.08 1.36L14.9 17h-4l-1.2-4.4 4.08-1.36z"></path></svg>
+                                Add Bundles
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td><td>15</td><td>2</td><td>155</td><td>XXS x 1, XL x 1</td>
+                        <td>
+                            <a href="add-bundle-detail.html" class="action-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.39 8.88a1 1 0 0 0-1.13-.33l-5.4 1.8-3.4-6.99a1 1 0 0 0-1.72-.01l-3.4 6.99-5.4-1.8a1 1 0 0 0-1.12 1.33l3.61 7.42a1 1 0 0 0 .9.58h13a1 1 0 0 0 .9-.58l3.61-7.42a1 1 0 0 0-.25-1.32zM6.1 17l-2.88-5.93 4.08 1.36L6.1 17zm8.8-4.4-1-2.05 1-2.05 4.08 1.36L14.9 17h-4l-1.2-4.4 4.08-1.36z"></path></svg>
+                                Add Bundles
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>

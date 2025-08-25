@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Remark List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5;
+            color: #1c1e21;
+        }
+        .app-header {
+            background-color: #1877F2;
+            color: #ffffff;
+            padding: 16px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .header-title { font-size: 1.6rem; font-weight: 600; }
+        .back-to-home {
+            display: flex;
+            align-items: center;
+            background-color: transparent;
+            border: 1px solid #ffffff;
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+        }
+        .back-to-home:hover { background-color: #ffffff; color: #1877F2; }
+        .back-to-home svg { width: 20px; height: 20px; margin-right: 8px; }
+        .main-container { padding: 30px; max-width: 1200px; margin: 0 auto; }
+        .table-container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            overflow-x: auto;
+        }
+        .project-table { width: 100%; border-collapse: collapse; text-align: left; }
+        .project-table th, .project-table td { padding: 15px 20px; border-bottom: 1px solid #f0f2f5; }
+        .project-table thead { background-color: #f5f6f7; }
+        .project-table th { font-weight: 600; font-size: 0.9rem; color: #606770; text-transform: uppercase; }
+        .project-table tbody tr:hover { background-color: #f5f6f7; }
+        .status { padding: 5px 12px; border-radius: 15px; font-weight: 500; font-size: 0.8rem; }
+        .status-stage2 { background-color: #e1e9f8; color: #2196F3; }
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 12px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+        .action-btn:hover { background-color: #0056b3; }
+        .action-btn svg { width: 18px; height: 18px; margin-right: 6px; }
+    </style>
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-title">Select Project to Add Remark</div>
+        <a href="homescreen.html" class="back-to-home">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12.707 17.293 8.414 13H18v-2H8.414l4.293-4.293-1.414-1.414L4.586 12l6.707 6.707z"></path></svg>
+            Back to Home
+        </a>
+    </header>
+    <main class="main-container">
+        <div class="table-container">
+            <table class="project-table">
+                <thead>
+                    <tr>
+                        <th>Project ID</th>
+                        <th>Customer</th>
+                        <th>Style Code</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>PROJ-001</td>
+                        <td>Customer A (Thailand)</td>
+                        <td>STYLE-A1</td>
+                        <td><span class="status status-stage2">Stage 2</span></td>
+                        <td>
+                            <a href="add-remark-detail.html" class="action-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19.045 7.401c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.378-.378-.88-.586-1.414-.586s-1.036.208-1.414.586L3 12.586V18h5.414L19.045 7.401zm-3.586-2L14 4.586 16.586 2 18 3.414 15.459 6zM4 13.414l7-7L12.586 8 6 14.586V17h2.414l.5-.5-1.5-1.5L4 13.414z"></path></svg>
+                                Add Remark
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>PROJ-004</td>
+                        <td>Customer A (Thailand)</td>
+                        <td>STYLE-A2</td>
+                        <td><span class="status status-stage2">Stage 2</span></td>
+                        <td>
+                            <a href="add-remark-detail.html" class="action-btn">
+                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19.045 7.401c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.378-.378-.88-.586-1.414-.586s-1.036.208-1.414.586L3 12.586V18h5.414L19.045 7.401zm-3.586-2L14 4.586 16.586 2 18 3.414 15.459 6zM4 13.414l7-7L12.586 8 6 14.586V17h2.414l.5-.5-1.5-1.5L4 13.414z"></path></svg>
+                                Add Remark
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>

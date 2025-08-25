@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Bundle Detail</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { margin: 0; font-family: 'Poppins', sans-serif; background-color: #f0f2f5; color: #1c1e21; }
+        .app-header {
+            background-color: #1877F2; color: #ffffff; padding: 16px 30px;
+            display: flex; align-items: center; justify-content: space-between;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .header-title { font-size: 1.6rem; font-weight: 600; }
+        .back-to-list {
+            display: flex; align-items: center; background-color: transparent;
+            border: 1px solid #ffffff; color: #ffffff; padding: 8px 16px;
+            border-radius: 6px; font-size: 0.9rem; cursor: pointer;
+            text-decoration: none; transition: background-color 0.2s ease;
+        }
+        .back-to-list:hover { background-color: #ffffff; color: #1877F2; }
+        .back-to-list svg { width: 20px; height: 20px; margin-right: 8px; }
+        .main-container { padding: 30px; max-width: 900px; margin: 0 auto; }
+        .content-card {
+            background-color: #ffffff; padding: 25px 30px; border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); margin-bottom: 30px;
+        }
+        .content-card h3 {
+            margin: 0 0 20px 0; font-weight: 600; font-size: 1.3rem;
+            border-bottom: 1px solid #e0e0e0; padding-bottom: 15px;
+        }
+        .info-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px 25px;
+        }
+        .info-item strong { display: block; color: #606770; font-size: 0.9rem; margin-bottom: 4px; }
+        .info-item span { font-size: 1rem; }
+        .form-group { display: flex; flex-direction: column; }
+        .form-group label { font-size: 0.9rem; font-weight: 500; margin-bottom: 8px; color: #606770; }
+        .form-group input {
+            width: 100%; padding: 10px; border: 1px solid #ccd0d5; border-radius: 6px;
+            font-family: 'Poppins', sans-serif; font-size: 1rem; box-sizing: border-box;
+        }
+        .bundle-input-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; align-items: flex-end; }
+        .primary-button {
+            padding: 10px 20px; background-color: #1877F2; color: white; border: none;
+            border-radius: 6px; cursor: pointer; font-size: 1rem; font-weight: 500; height: 42px;
+        }
+        .primary-button:hover { background-color: #166fe5; }
+        .bundle-table { width: 100%; border-collapse: collapse; text-align: left; margin-top: 20px; }
+        .bundle-table th, .bundle-table td { padding: 12px 15px; border-bottom: 1px solid #f0f2f5; }
+        .bundle-table thead { background-color: #f5f6f7; }
+        .delete-btn { background: none; border: none; cursor: pointer; padding: 5px; }
+        .delete-btn svg { width: 20px; height: 20px; fill: #9a9a9a; transition: fill 0.2s ease; }
+        .delete-btn:hover svg { fill: #e0245e; }
+        .action-footer { text-align: right; }
+        .save-button {
+            padding: 12px 30px; font-size: 1.1rem; background-color: #42b72a;
+            color: white; border: none; border-radius: 6px; cursor: pointer;
+        }
+        .save-button:hover { background-color: #36a420; }
+        .total-layers { font-weight: 600; font-size: 1.1rem; margin-top: 15px; text-align: right; }
+    </style>
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-title">Add Bundles for Mark #1</div>
+        <a href="add-bundle-mark-list.html" class="back-to-list">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12.707 17.293 8.414 13H18v-2H8.414l4.293-4.293-1.414-1.414L4.586 12l6.707 6.707z"></path></svg>
+            Back to Mark List
+        </a>
+    </header>
+    <main class="main-container">
+        <div class="content-card">
+            <h3>Mark Information</h3>
+            <div class="info-grid">
+                <div class="info-item"><strong>Mark #:</strong><span>1</span></div>
+                <div class="info-item"><strong>Total Layers:</strong><span id="total-layers-target">30</span></div>
+                <div class="info-item"><strong>Copies:</strong><span>1</span></div>
+                <div class="info-item"><strong>Length:</strong><span>180 inches</span></div>
+            </div>
+        </div>
+        <div class="content-card">
+            <h3>Create Bundles</h3>
+            <div class="bundle-input-grid">
+                <div class="form-group">
+                    <label for="layers-input">Layers in this Bundle</label>
+                    <input type="number" id="layers-input" placeholder="e.g., 10">
+                </div>
+                <button id="add-bundle-btn" class="primary-button">Add Bundle</button>
+            </div>
+        </div>
+        <div class="content-card">
+            <h3>Bundles Summary</h3>
+            <table class="bundle-table">
+                <thead><tr><th>Bundle #</th><th>Layers</th><th>Action</th></tr></thead>
+                <tbody id="bundle-table-body"></tbody>
+            </table>
+            <div class="total-layers">
+                Total Layers Added: <span id="current-layers-sum">0</span> / <span id="total-layers-display">30</span>
+            </div>
+        </div>
+        <div class="action-footer">
+            <button class="save-button">Save Bundles</button>
+        </div>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const totalLayers = parseInt(document.getElementById('total-layers-target').textContent);
+            document.getElementById('total-layers-display').textContent = totalLayers;
+
+            const addBundleBtn = document.getElementById('add-bundle-btn');
+            const layersInput = document.getElementById('layers-input');
+            const bundleTableBody = document.getElementById('bundle-table-body');
+            const currentLayersSumEl = document.getElementById('current-layers-sum');
+            let bundleCounter = 1;
+
+            function updateTotal() {
+                let sum = 0;
+                bundleTableBody.querySelectorAll('tr').forEach(row => {
+                    sum += parseInt(row.cells[1].textContent);
+                });
+                currentLayersSumEl.textContent = sum;
+            }
+
+            addBundleBtn.addEventListener('click', () => {
+                const layers = parseInt(layersInput.value);
+                if (!layers || layers <= 0) {
+                    alert('Please enter a valid number of layers.');
+                    return;
+                }
+
+                const currentSum = parseInt(currentLayersSumEl.textContent);
+                if (currentSum + layers > totalLayers) {
+                    alert('The total layers cannot exceed the target for this mark.');
+                    return;
+                }
+
+                const newRow = document.createElement('tr');
+                newRow.innerHTML = `
+                    <td>${bundleCounter++}</td>
+                    <td>${layers}</td>
+                    <td>
+                        <button class="delete-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"></path></svg>
+                        </button>
+                    </td>
+                `;
+                newRow.querySelector('.delete-btn').addEventListener('click', function() {
+                    this.closest('tr').remove();
+                    updateTotal();
+                });
+
+                bundleTableBody.appendChild(newRow);
+                layersInput.value = '';
+                layersInput.focus();
+                updateTotal();
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Mark</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0; font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5; color: #1c1e21;
+        }
+        .app-header {
+            background-color: #1877F2; color: #ffffff; padding: 16px 30px;
+            display: flex; align-items: center; justify-content: space-between;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .header-title { font-size: 1.6rem; font-weight: 600; }
+        .back-to-home {
+            display: flex; align-items: center; background-color: transparent;
+            border: 1px solid #ffffff; color: #ffffff; padding: 8px 16px;
+            border-radius: 6px; font-size: 0.9rem; cursor: pointer;
+            text-decoration: none; transition: background-color 0.2s ease;
+        }
+        .back-to-home:hover { background-color: #ffffff; color: #1877F2; }
+        .back-to-home svg { width: 20px; height: 20px; margin-right: 8px; }
+        .main-container { padding: 30px; max-width: 1200px; margin: 0 auto; }
+        .content-card {
+            background-color: #ffffff; padding: 25px 30px; border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); margin-bottom: 30px;
+        }
+        .content-card h3 {
+            margin: 0 0 20px 0; font-weight: 600; font-size: 1.3rem;
+            border-bottom: 1px solid #e0e0e0; padding-bottom: 15px;
+        }
+        .info-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px 25px; margin-bottom: 20px;
+        }
+        .info-item strong { display: block; color: #606770; font-size: 0.9rem; margin-bottom: 4px; }
+        .info-item span { font-size: 1rem; }
+        .size-summary-table { width: 100%; border-collapse: collapse; text-align: center; }
+        .size-summary-table th, .size-summary-table td { padding: 10px; border: 1px solid #e0e0e0; }
+        .size-summary-table thead { background-color: #f5f6f7; }
+        
+        /* --- Styles for Marker Creation Form --- */
+        .marker-creation-top-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 2fr 2fr;
+            gap: 20px;
+            align-items: flex-end;
+            margin-bottom: 25px;
+        }
+        .size-dist-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 15px;
+        }
+        .form-group { display: flex; flex-direction: column; }
+        .form-group label { font-size: 0.9rem; font-weight: 500; margin-bottom: 8px; color: #606770; }
+        .form-group input, .form-group select {
+            width: 100%; padding: 10px; border: 1px solid #ccd0d5; border-radius: 6px;
+            font-family: 'Poppins', sans-serif; font-size: 1rem; box-sizing: border-box;
+        }
+        .primary-button {
+            padding: 10px 20px; background-color: #1877F2; color: white; border: none;
+            border-radius: 6px; cursor: pointer; font-size: 1rem; font-weight: 500;
+            height: 42px; transition: background-color 0.2s ease; width: 100%;
+        }
+        .primary-button:hover { background-color: #166fe5; }
+
+        /* --- Styles for Marker Plan Table --- */
+        .marker-plan-table { width: 100%; border-collapse: collapse; text-align: left; margin-top: 20px; }
+        .marker-plan-table th, .marker-plan-table td { padding: 12px 15px; border-bottom: 1px solid #f0f2f5; }
+        .marker-plan-table thead { background-color: #f5f6f7; }
+        .delete-btn { background: none; border: none; cursor: pointer; padding: 5px; }
+        .delete-btn svg { width: 20px; height: 20px; fill: #9a9a9a; transition: fill 0.2s ease; }
+        .delete-btn:hover svg { fill: #e0245e; }
+        .action-footer { text-align: right; }
+        .save-button {
+            padding: 12px 30px; font-size: 1.1rem; background-color: #42b72a;
+            color: white; border: none; border-radius: 6px; cursor: pointer;
+        }
+        .save-button:hover { background-color: #36a420; }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 992px) {
+            .marker-creation-top-row {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            .marker-creation-top-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-title">Add Mark: P-25-0267</div>
+        <a href="homescreen.html" class="back-to-home">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12.707 17.293 8.414 13H18v-2H8.414l4.293-4.293-1.414-1.414L4.586 12l6.707 6.707z"></path></svg>
+            Back to Home
+        </a>
+    </header>
+    <main class="main-container">
+        <!-- Project Info Section -->
+        <div class="content-card">
+            <h3>Project & Fabric Information</h3>
+            <div class="info-grid">
+                <div class="info-item"><strong>Style Code:</strong><span>848280521</span></div>
+                <div class="info-item"><strong>Fabric:</strong><span>มัสลิน / SMOKY</span></div>
+                <div class="info-item"><strong>Color:</strong><span>ชุดผ้าลูกฟูก/ลายเล็ก</span></div>
+                <div class="info-item"><strong>Fabric Width:</strong><span>300 cm</span></div>
+            </div>
+            <table class="size-summary-table">
+                <thead><tr><th>Size</th><th>XXS</th><th>XS</th><th>S</th><th>M</th><th>L</th><th>XL</th><th>Total</th></tr></thead>
+                <tbody><tr><td><strong>Quantity</strong></td><td>15</td><td>9</td><td>55</td><td>34</td><td>0</td><td>27</td><td><strong>140</strong></td></tr></tbody>
+            </table>
+        </div>
+
+        <!-- Marker Creation Section -->
+        <div class="content-card">
+            <h3>Create New Marker</h3>
+            <div class="marker-creation-top-row">
+                <div class="form-group">
+                    <label for="layers">Fabric Layers</label>
+                    <input type="number" id="layers" placeholder="e.g., 15">
+                </div>
+                <div class="form-group">
+                    <label for="copies">Copies</label>
+                    <input type="number" id="copies" value="1">
+                </div>
+                <div class="form-group">
+                    <label for="length">Fabric Length (inches)</label>
+                    <input type="number" id="length" placeholder="e.g., 155">
+                </div>
+                <div class="form-group">
+                    <label>&nbsp;</label> <!-- Spacer for alignment -->
+                    <button id="add-marker-btn" class="primary-button">Add Marker to Plan</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Size Distribution for this Marker</label>
+                <div class="size-dist-section" id="size-dist-inputs">
+                    <!-- Size inputs will be dynamically added here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Marker Plan Section -->
+        <div class="content-card">
+            <h3>Marker Plan</h3>
+            <table class="marker-plan-table">
+                <thead><tr><th>#</th><th>Layers</th><th>Copies</th><th>Length (in)</th><th>Size Distribution</th><th>Action</th></tr></thead>
+                <tbody id="marker-plan-body">
+                    <!-- Marker rows will be added here -->
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="action-footer">
+            <button class="save-button">Save Mark Plan</button>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sizes = ['XXS', 'XS', 'S', 'M', 'L', 'XL'];
+            const sizeDistContainer = document.getElementById('size-dist-inputs');
+
+            // Dynamically create input fields for each size
+            sizes.forEach(size => {
+                const sizeGroup = document.createElement('div');
+                sizeGroup.classList.add('form-group');
+                sizeGroup.innerHTML = `
+                    <label for="size-${size}">${size}</label>
+                    <input type="number" id="size-${size}" data-size="${size}" placeholder="0" min="0">
+                `;
+                sizeDistContainer.appendChild(sizeGroup);
+            });
+
+            const addMarkerBtn = document.getElementById('add-marker-btn');
+            const markerPlanBody = document.getElementById('marker-plan-body');
+            let markerCounter = 1;
+
+            addMarkerBtn.addEventListener('click', () => {
+                const layers = document.getElementById('layers').value;
+                const copies = document.getElementById('copies').value;
+                const length = document.getElementById('length').value;
+
+                if (!layers || !length) {
+                    alert('Please fill in at least Layers and Length.');
+                    return;
+                }
+
+                let sizeDistribution = '';
+                const sizeInputs = sizeDistContainer.querySelectorAll('input');
+                sizeInputs.forEach(input => {
+                    if (input.value && parseInt(input.value) > 0) {
+                        sizeDistribution += `${input.dataset.size} x ${input.value}, `;
+                    }
+                });
+                sizeDistribution = sizeDistribution.slice(0, -2); // Remove last comma and space
+
+                if (!sizeDistribution) {
+                    alert('Please specify the quantity for at least one size.');
+                    return;
+                }
+
+                const newRow = document.createElement('tr');
+                newRow.innerHTML = `
+                    <td>${markerCounter++}</td>
+                    <td>${layers}</td>
+                    <td>${copies}</td>
+                    <td>${length}</td>
+                    <td>${sizeDistribution}</td>
+                    <td>
+                        <button class="delete-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"></path></svg>
+                        </button>
+                    </td>
+                `;
+                
+                newRow.querySelector('.delete-btn').addEventListener('click', function() {
+                    this.closest('tr').remove();
+                });
+
+                markerPlanBody.appendChild(newRow);
+
+                // Clear inputs
+                document.getElementById('layers').value = '';
+                document.getElementById('copies').value = '1';
+                document.getElementById('length').value = '';
+                sizeInputs.forEach(input => input.value = '');
+            });
+        });
+    </script>
+</body>
+</html>
