@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bundle Tracking</title>
+    <!-- Import Google Font 'Poppins' -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- General & Reusable Styles --- */
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5;
+            color: #1c1e21;
+        }
+
+        .app-header {
+            background-color: #1877F2;
+            color: #ffffff;
+            padding: 16px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header-title { font-size: 1.6rem; font-weight: 600; }
+
+        .back-to-home {
+            display: flex;
+            align-items: center;
+            background-color: transparent;
+            border: 1px solid #ffffff;
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+        }
+        
+        .back-to-home:hover { background-color: #ffffff; color: #1877F2; }
+        .back-to-home svg { width: 20px; height: 20px; margin-right: 8px; }
+
+        .main-container {
+            padding: 30px;
+            max-width: 1400px; /* Wider container for more columns */
+            margin: 0 auto;
+        }
+
+        .filter-container {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+        }
+        
+        .filter-container h3 {
+            margin: 0 0 20px 0;
+            font-weight: 600;
+            font-size: 1.3rem;
+        }
+
+        .filter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            align-items: flex-end;
+        }
+        
+        .form-group { display: flex; flex-direction: column; }
+        
+        .form-group label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #606770;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccd0d5;
+            border-radius: 6px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        
+        .filter-button {
+            padding: 10px 20px;
+            background-color: #1877F2;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+            transition: background-color 0.2s ease;
+            height: 42px;
+        }
+        
+        .filter-button:hover { background-color: #166fe5; }
+
+        .table-container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            overflow-x: auto;
+        }
+
+        .bundle-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        
+        .bundle-table th, .bundle-table td {
+            padding: 15px 20px;
+            border-bottom: 1px solid #f0f2f5;
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+        
+        .bundle-table thead { background-color: #f5f6f7; }
+        
+        .bundle-table th {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #606770;
+            text-transform: uppercase;
+        }
+        
+        .bundle-table tbody tr:hover { background-color: #f5f6f7; }
+        
+        /* Station Status Badges */
+        .station {
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-weight: 500;
+            font-size: 0.8rem;
+            text-align: center;
+            display: inline-block;
+        }
+        
+        .station-cutting { background-color: #e1e9f8; color: #2196F3; } /* Blue */
+        .station-sewing { background-color: #fff0e0; color: #FF9800; } /* Orange */
+        .station-qc { background-color: #e8e6f6; color: #6f42c1; } /* Purple */
+        .station-ironing { background-color: #f8e1e1; color: #dc3545; } /* Red */
+        .station-packing { background-color: #e2f3f5; color: #17a2b8; } /* Teal */
+        .station-inspection { background-color: #e6f6e8; color: #4CAF50; } /* Green */
+
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="header-title">Bundle Tracking</div>
+        <a href="index.html" class="back-to-home">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12.707 17.293 8.414 13H18v-2H8.414l4.293-4.293-1.414-1.414L4.586 12l6.707 6.707z"></path></svg>
+            Back to Home
+        </a>
+    </header>
+
+    <main class="main-container">
+
+        <div class="filter-container">
+            <h3>Filter Bundles</h3>
+            <div class="filter-grid">
+                <div class="form-group">
+                    <label for="bundle-id">Bundle ID</label>
+                    <input type="text" id="bundle-id" placeholder="Enter Bundle ID">
+                </div>
+                <div class="form-group">
+                    <label for="project-id">Project ID</label>
+                    <input type="text" id="project-id" placeholder="Enter Project ID">
+                </div>
+                <div class="form-group">
+                    <label for="fabric">Fabric</label>
+                    <input type="text" id="fabric" placeholder="e.g., Cotton">
+                </div>
+                <div class="form-group">
+                    <label for="station">Current Station</label>
+                    <select id="station">
+                        <option value="">All Stations</option>
+                        <option value="cutting">1. Cutting</option>
+                        <option value="sewing">2. Sewing</option>
+                        <option value="qc">3. Quality Check (QC)</option>
+                        <option value="ironing">4. Ironing</option>
+                        <option value="packing">6. Folding & Packing</option>
+                        <option value="inspection">7. Final Inspection</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button class="filter-button">Apply Filter</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table class="bundle-table">
+                <thead>
+                    <tr>
+                        <th>Bundle ID</th>
+                        <th>Project ID</th>
+                        <th>Fabric</th>
+                        <th>Color</th>
+                        <th>Layers</th>
+                        <th>Size</th>
+                        <th>Current Station</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>BDL-001-1</td>
+                        <td>PROJ-002</td>
+                        <td>Cotton 100%</td>
+                        <td>Black</td>
+                        <td>15</td>
+                        <td>S</td>
+                        <td><span class="station station-sewing">2. Sewing</span></td>
+                    </tr>
+                    <tr>
+                        <td>BDL-001-2</td>
+                        <td>PROJ-002</td>
+                        <td>Cotton 100%</td>
+                        <td>Black</td>
+                        <td>15</td>
+                        <td>M</td>
+                        <td><span class="station station-sewing">2. Sewing</span></td>
+                    </tr>
+                    <tr>
+                        <td>BDL-002-1</td>
+                        <td>PROJ-003</td>
+                        <td>Rib</td>
+                        <td>White</td>
+                        <td>30</td>
+                        <td>L</td>
+                        <td><span class="station station-cutting">1. Cutting</span></td>
+                    </tr>
+                    <tr>
+                        <td>BDL-003-1</td>
+                        <td>PROJ-005</td>
+                        <td>Polyester</td>
+                        <td>Navy</td>
+                        <td>10</td>
+                        <td>XL</td>
+                        <td><span class="station station-qc">3. Quality Check (QC)</span></td>
+                    </tr>
+                     <tr>
+                        <td>BDL-004-1</td>
+                        <td>PROJ-005</td>
+                        <td>Polyester</td>
+                        <td>Red</td>
+                        <td>10</td>
+                        <td>M</td>
+                        <td><span class="station station-inspection">7. Final Inspection</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+</body>
+</html>
